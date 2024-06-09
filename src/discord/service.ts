@@ -1,6 +1,7 @@
 import { Effect, Layer } from "effect";
 import { PubSubClient } from "../pubsub/client";
 import { DiscordApiClient } from "./api";
+import { DiscordEventSub } from "./eventsub";
 
 const make = Effect.gen(function* () {
   yield* Effect.logInfo("DiscordService starting...");
@@ -12,4 +13,5 @@ const make = Effect.gen(function* () {
 export const DiscordService = Layer.scopedDiscard(make).pipe(
   Layer.provide(DiscordApiClient.Live),
   Layer.provide(PubSubClient.Live),
+  Layer.provide(DiscordEventSub.Live),
 );
