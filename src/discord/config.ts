@@ -9,6 +9,6 @@ export const DiscordConfig = Config.all({
   Config.map((env) => ({
     ...env,
     version: "10",
-    intents: [GatewayIntentBits.Guilds],
+    intents: [GatewayIntentBits.Guilds] as const,
   })),
 );
